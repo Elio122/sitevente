@@ -6,7 +6,7 @@
   <title>ElioDev — Agence Web & Solutions Informatiques</title>
   <meta name="description" content="Agence web spécialisée en création de sites internet, applications web et solutions informatiques sur mesure." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -28,7 +28,7 @@
     }
 
     /* ── Typography ── */
-    h1, h2, h3, h4, .display { font-family: 'Syne', sans-serif; }
+    h1, h2, h3, h4, .display { font-family: 'Plus Jakarta Sans', sans-serif; }
 
     /* ── Navbar ── */
     nav {
@@ -41,7 +41,7 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.15rem; font-weight: 800;
       color: var(--black); text-decoration: none;
       display: flex; align-items: center; gap: 10px;
@@ -96,7 +96,7 @@
     .hero h1 {
       font-size: clamp(3rem, 7vw, 6.5rem);
       font-weight: 800; line-height: 1.05;
-      letter-spacing: -0.03em; color: var(--black);
+      letter-spacing: -0.01em; color: var(--black);
       max-width: 900px;
     }
     .hero h1 em { font-style: normal; color: var(--gray-light); }
@@ -136,7 +136,7 @@
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .marquee-item {
       display: flex; align-items: center; gap: 8px;
-      padding: 0 40px; font-family: 'Syne', sans-serif;
+      padding: 0 40px; font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.85rem; font-weight: 600; color: var(--gray-light);
       text-transform: uppercase; letter-spacing: .08em; white-space: nowrap;
     }
@@ -153,7 +153,7 @@
     /* ── Services ── */
     .services { padding: 120px 0; }
     .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 70px; flex-wrap: wrap; gap: 20px; }
-    .services-header h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; max-width: 480px; }
+    .services-header h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; max-width: 480px; }
     .services-header p { color: var(--gray); font-size: 0.95rem; max-width: 300px; line-height: 1.7; }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .service-card {
@@ -161,7 +161,7 @@
       transition: background .2s;
     }
     .service-card:hover { background: var(--bg); }
-    .service-num { font-family: 'Syne', sans-serif; font-size: 0.75rem; color: var(--gray-light); margin-bottom: 28px; font-weight: 600; }
+    .service-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; color: var(--gray-light); margin-bottom: 28px; font-weight: 600; }
     .service-icon-wrap { font-size: 2rem; margin-bottom: 20px; }
     .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
     .service-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
@@ -171,7 +171,7 @@
     /* ── Projects ── */
     .projects { padding: 120px 0; background: var(--bg); border-top: 1px solid var(--border); }
     .projects-header { margin-bottom: 60px; }
-    .projects-header h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; }
+    .projects-header h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.01em; }
 
     /* Featured project */
     .project-featured {
@@ -211,7 +211,7 @@
     }
     .browser-body { padding: 16px; }
     .browser-nav { background: #4f46e5; border-radius: 7px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-    .browser-nav span { color: white; font-size: 0.7rem; font-weight: 700; font-family: 'Syne', sans-serif; }
+    .browser-nav span { color: white; font-size: 0.7rem; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
     .browser-nav-links { display: flex; gap: 8px; }
     .browser-nav-links span { color: rgba(255,255,255,0.7); font-size: 0.62rem; }
     .browser-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -221,12 +221,12 @@
     .browser-card-price { font-size: 0.62rem; color: #4f46e5; font-weight: 700; margin-top: 2px; }
     .browser-stats { display: flex; gap: 6px; margin-top: 10px; }
     .browser-stat { flex: 1; background: #f0f4ff; border-radius: 6px; padding: 7px; text-align: center; }
-    .browser-stat-num { font-size: 0.8rem; font-weight: 800; color: #4f46e5; font-family: 'Syne', sans-serif; }
+    .browser-stat-num { font-size: 0.8rem; font-weight: 800; color: #4f46e5; font-family: 'Plus Jakarta Sans', sans-serif; }
     .browser-stat-label { font-size: 0.55rem; color: var(--gray); margin-top: 1px; }
 
     .project-info { padding: 50px 48px; display: flex; flex-direction: column; justify-content: center; }
     .project-badge { display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 0.72rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-bottom: 24px; width: fit-content; }
-    .project-info h3 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.2; }
+    .project-info h3 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.2; }
     .project-info p { font-size: 0.9rem; color: var(--gray); line-height: 1.75; margin-bottom: 24px; }
     .project-features { list-style: none; space-y: 8px; margin-bottom: 32px; }
     .project-features li { font-size: 0.85rem; color: var(--gray-dark); padding: 5px 0; display: flex; align-items: center; gap: 10px; }
@@ -252,7 +252,7 @@
     /* ── Skills ── */
     .skills { padding: 120px 0; border-top: 1px solid var(--border); }
     .skills-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
-    .skills-left h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .skills-left h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 20px; }
     .skills-left p { color: var(--gray); font-size: 0.92rem; line-height: 1.75; margin-bottom: 40px; }
     .skills-icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .skill-icon-card {
@@ -276,14 +276,14 @@
     .process .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
     .process .section-label { color: rgba(255,255,255,0.3); }
     .process .section-label::before { background: rgba(255,255,255,0.3); }
-    .process h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; color: white; margin-bottom: 70px; }
+    .process h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.01em; color: white; margin-bottom: 70px; }
     .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); }
     .process-step {
       padding: 44px 36px; background: var(--black);
       transition: background .2s;
     }
     .process-step:hover { background: #111; }
-    .step-num { font-family: 'Syne', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.25); font-weight: 700; letter-spacing: .1em; margin-bottom: 32px; }
+    .step-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.25); font-weight: 700; letter-spacing: .1em; margin-bottom: 32px; }
     .step-icon { font-size: 2rem; margin-bottom: 20px; }
     .process-step h3 { font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 12px; }
     .process-step p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
@@ -294,13 +294,13 @@
     .stat-item { padding: 40px; border-right: 1px solid var(--border); text-align: center; }
     .stat-item:last-child { border-right: none; }
     .stat-item:first-child { border-left: 1px solid var(--border); }
-    .stat-number { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; letter-spacing: -0.03em; }
+    .stat-number { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.8rem; font-weight: 800; letter-spacing: -0.01em; }
     .stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
 
     /* ── Contact ── */
     .contact { padding: 120px 0; }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .contact-left h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; line-height: 1.1; }
+    .contact-left h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 20px; line-height: 1.1; }
     .contact-left p { color: var(--gray); font-size: 0.93rem; line-height: 1.75; margin-bottom: 48px; }
     .contact-info { display: flex; flex-direction: column; gap: 16px; }
     .contact-info-item { display: flex; align-items: center; gap: 14px; }
@@ -331,7 +331,7 @@
     /* ── Footer ── */
     footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .footer-logo { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .footer-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .footer-links { display: flex; gap: 28px; }
     .footer-links a { font-size: 0.82rem; color: var(--gray); text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--black); }
