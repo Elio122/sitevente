@@ -297,6 +297,48 @@
     .stat-number { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.8rem; font-weight: 800; letter-spacing: -0.01em; }
     .stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
 
+    /* ── Offres ── */
+    .offres { padding: 120px 0; background: var(--bg); border-top: 1px solid var(--border); }
+    .offres-header { margin-bottom: 60px; }
+    .offres-header h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.01em; }
+    .offres-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .offre-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px; display: flex; flex-direction: column;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .offre-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+    .offre-card.featured {
+      background: var(--black); border-color: var(--black); color: white;
+    }
+    .offre-label {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--gray-light); margin-bottom: 20px;
+    }
+    .offre-card.featured .offre-label { color: rgba(255,255,255,0.4); }
+    .offre-name { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
+    .offre-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.65; margin-bottom: 28px; }
+    .offre-card.featured .offre-desc { color: rgba(255,255,255,0.55); }
+    .offre-price { margin-bottom: 32px; }
+    .offre-from { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--gray-light); display: block; margin-bottom: 4px; }
+    .offre-card.featured .offre-from { color: rgba(255,255,255,0.4); }
+    .offre-amount { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+    .offre-currency { font-size: 1.4rem; vertical-align: super; font-weight: 700; }
+    .offre-list { list-style: none; flex: 1; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .offre-list li { font-size: 0.85rem; display: flex; align-items: flex-start; gap: 10px; }
+    .offre-list li .check { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .offre-card.featured .offre-list li .check { border-color: rgba(255,255,255,0.2); }
+    .check svg { width: 9px; height: 9px; stroke: var(--gray); }
+    .offre-card.featured .check svg { stroke: rgba(255,255,255,0.6); }
+    .offre-list li span:last-child { color: var(--gray); line-height: 1.5; }
+    .offre-card.featured .offre-list li span:last-child { color: rgba(255,255,255,0.6); }
+    .offre-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 13px; border-radius: 10px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all .2s; border: 1.5px solid var(--border); color: var(--black); }
+    .offre-btn:hover { border-color: var(--black); }
+    .offre-card.featured .offre-btn { background: white; color: var(--black); border-color: white; }
+    .offre-card.featured .offre-btn:hover { background: rgba(255,255,255,0.9); }
+    .offre-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; margin-bottom: 20px; width: fit-content; }
+    @media (max-width: 1024px) { .offres-grid { grid-template-columns: 1fr; max-width: 480px; } }
+
     /* ── Contact ── */
     .contact { padding: 120px 0; }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -388,6 +430,7 @@
       <a href="#services">Services</a>
       <a href="#projets">Projets</a>
       <a href="#competences">Compétences</a>
+      <a href="#offres">Offres</a>
       <a href="#contact" class="nav-cta">Démarrer un projet</a>
     </div>
     <button class="hamburger" onclick="document.getElementById('mmenu').classList.toggle('open')" aria-label="Menu">
@@ -398,6 +441,7 @@
     <a href="#services" onclick="this.parentElement.classList.remove('open')">Services</a>
     <a href="#projets" onclick="this.parentElement.classList.remove('open')">Projets</a>
     <a href="#competences" onclick="this.parentElement.classList.remove('open')">Compétences</a>
+    <a href="#offres" onclick="this.parentElement.classList.remove('open')">Offres</a>
     <a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
   </div>
 
@@ -783,6 +827,77 @@
     </div>
   </section>
 
+  <!-- ══════════════ OFFRES ══════════════ -->
+  <section id="offres" class="offres">
+    <div class="container">
+      <div class="offres-header reveal">
+        <div class="section-label">Tarifs</div>
+        <h2>Nos offres</h2>
+      </div>
+      <div class="offres-grid reveal">
+
+        <!-- Offre 1 -->
+        <div class="offre-card">
+          <div class="offre-label">Offre Essentielle</div>
+          <div class="offre-name">Site Vitrine</div>
+          <p class="offre-desc">Un site rapide, moderne et optimisé pour présenter votre activité sans complexité technique.</p>
+          <div class="offre-price">
+            <span class="offre-from">À partir de</span>
+            <div class="offre-amount"><span class="offre-currency">€</span>400</div>
+          </div>
+          <ul class="offre-list">
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Jusqu'à 5 pages (accueil, services, contact…)</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Design responsive mobile & desktop</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Optimisation SEO de base</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Formulaire de contact</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Sans base de données</span></li>
+          </ul>
+          <a href="#contact" class="offre-btn">Demander un devis</a>
+        </div>
+
+        <!-- Offre 2 — Featured -->
+        <div class="offre-card featured">
+          <div class="offre-badge">✦ Le plus populaire</div>
+          <div class="offre-label">Offre Pro</div>
+          <div class="offre-name">Site Vitrine Avancé</div>
+          <p class="offre-desc">Un site plus complet avec des fonctionnalités enrichies pour vous démarquer de la concurrence.</p>
+          <div class="offre-price">
+            <span class="offre-from">À partir de</span>
+            <div class="offre-amount"><span class="offre-currency">€</span>500</div>
+          </div>
+          <ul class="offre-list">
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Pages illimitées</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Design premium sur mesure</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Animations & interactions avancées</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>SEO avancé & performances optimisées</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Formulaires personnalisés</span></li>
+          </ul>
+          <a href="#contact" class="offre-btn">Demander un devis</a>
+        </div>
+
+        <!-- Offre 3 -->
+        <div class="offre-card">
+          <div class="offre-label">Offre Complète</div>
+          <div class="offre-name">Application Web</div>
+          <p class="offre-desc">Une solution complète avec base de données, espace utilisateur et logique métier sur mesure.</p>
+          <div class="offre-price">
+            <span class="offre-from">À partir de</span>
+            <div class="offre-amount"><span class="offre-currency">€</span>1500</div>
+          </div>
+          <ul class="offre-list">
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Base de données complète (MySQL / PostgreSQL)</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Authentification & gestion des rôles</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Tableau de bord & interface d'administration</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>API & logique métier sur mesure</span></li>
+            <li><span class="check"><svg fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Maintenance & support inclus 3 mois</span></li>
+          </ul>
+          <a href="#contact" class="offre-btn">Demander un devis</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════ CONTACT ══════════════ -->
   <section id="contact" class="contact">
     <div class="container">
@@ -869,6 +984,7 @@
         <a href="#services">Services</a>
         <a href="#projets">Projets</a>
         <a href="#competences">Compétences</a>
+        <a href="#offres">Offres</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/Elio122" target="_blank" rel="noopener">GitHub</a>
       </div>
