@@ -129,18 +129,18 @@
     .divider { border: none; border-top: 1px solid var(--border); }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-    /* ── Marquee (logos) ── */
-    .marquee-wrap { overflow: hidden; padding: 40px 0; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .marquee-track { display: flex; gap: 0; animation: marquee 25s linear infinite; width: max-content; }
-    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .marquee-item {
+    /* ── Tech grid ── */
+    .tech-section { padding: 60px 0; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; margin: 0 auto; padding: 0 40px; }
+    .tech-pill {
       display: flex; align-items: center; gap: 8px;
-      padding: 0 40px; font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.85rem; font-weight: 600; color: var(--gray-light);
-      text-transform: uppercase; letter-spacing: .08em; white-space: nowrap;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 100px; padding: 8px 18px;
+      font-size: 0.82rem; font-weight: 600; color: var(--gray-dark);
+      transition: all .2s; cursor: default;
     }
-    .marquee-sep { color: var(--border); }
+    .tech-pill:hover { border-color: var(--black); background: var(--black); color: var(--white); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+    .tech-pill span:first-child { font-size: 1rem; }
 
     /* ── Section header ── */
     .section-label {
@@ -428,31 +428,21 @@
     </div>
   </section>
 
-  <!-- ══════════════ MARQUEE ══════════════ -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <!-- 1st set -->
-      <div class="marquee-item">PHP <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">React <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">TailwindCSS <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">Node.js <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">MySQL <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">Vercel <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">GitHub <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">Figma <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">Docker <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">API REST <span class="marquee-sep">/</span></div>
-      <!-- 2nd set (duplicate for loop) -->
-      <div class="marquee-item">PHP <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">React <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">TailwindCSS <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">Node.js <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">MySQL <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">Vercel <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">GitHub <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">Figma <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">Docker <span class="marquee-sep">/</span></div>
-      <div class="marquee-item">API REST <span class="marquee-sep">/</span></div>
+  <!-- ══════════════ TECH GRID ══════════════ -->
+  <div class="tech-section reveal">
+    <div class="tech-grid">
+      <div class="tech-pill"><span>🐘</span> PHP</div>
+      <div class="tech-pill"><span>⚛️</span> React</div>
+      <div class="tech-pill"><span>🎨</span> TailwindCSS</div>
+      <div class="tech-pill"><span>🟢</span> Node.js</div>
+      <div class="tech-pill"><span>🐬</span> MySQL</div>
+      <div class="tech-pill"><span>🐘</span> PostgreSQL</div>
+      <div class="tech-pill"><span>🐙</span> GitHub</div>
+      <div class="tech-pill"><span>🖼️</span> Figma</div>
+      <div class="tech-pill"><span>🐳</span> Docker</div>
+      <div class="tech-pill"><span>🔗</span> API REST</div>
+      <div class="tech-pill"><span>⚡</span> HTMX</div>
+      <div class="tech-pill"><span>🔧</span> Linux</div>
     </div>
   </div>
 
@@ -514,13 +504,13 @@
         </div>
         <div class="service-card">
           <div class="service-num">03</div>
-          <div class="service-icon-wrap">🛒</div>
-          <h3>E-commerce</h3>
-          <p>Boutiques en ligne complètes avec gestion des produits, paiements sécurisés et espace client.</p>
+          <div class="service-icon-wrap">🗄️</div>
+          <h3>Bases de données</h3>
+          <p>Conception, modélisation et optimisation de bases de données relationnelles adaptées à vos besoins métier.</p>
           <div class="service-tags">
-            <span class="tag">Stripe</span>
-            <span class="tag">CMS</span>
-            <span class="tag">API</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">TiDB</span>
           </div>
         </div>
         <div class="service-card">
@@ -536,13 +526,13 @@
         </div>
         <div class="service-card">
           <div class="service-num">05</div>
-          <div class="service-icon-wrap">☁️</div>
-          <h3>Déploiement Cloud</h3>
-          <p>Hébergement et déploiement sur Vercel, Netlify ou serveurs dédiés avec pipeline CI/CD automatisé.</p>
+          <div class="service-icon-wrap">🔐</div>
+          <h3>Sécurité & Performance</h3>
+          <p>Audit de sécurité, optimisation des performances, HTTPS, protection des données et bonnes pratiques OWASP.</p>
           <div class="service-tags">
-            <span class="tag">Vercel</span>
-            <span class="tag">GitHub</span>
-            <span class="tag">CI/CD</span>
+            <span class="tag">HTTPS</span>
+            <span class="tag">OWASP</span>
+            <span class="tag">Perf</span>
           </div>
         </div>
         <div class="service-card">
@@ -630,20 +620,15 @@
             <li>Authentification multi-rôles (admin, agent, client)</li>
             <li>Interface dynamique HTMX sans rechargement de page</li>
             <li>CRM, agenda, honoraires & tableau de bord</li>
-            <li>Déployé sur Vercel avec base de données TiDB Cloud</li>
+            <li>Base de données TiDB Cloud avec requêtes préparées</li>
           </ul>
           <div class="project-techs">
             <span class="tag">PHP</span>
             <span class="tag">HTMX</span>
             <span class="tag">TailwindCSS</span>
             <span class="tag">TiDB</span>
-            <span class="tag">Vercel</span>
           </div>
           <div class="project-btns">
-            <a href="https://github.com/Elio122/agence" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.92.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              Code source
-            </a>
             <a href="https://agence-snowy.vercel.app/" target="_blank" rel="noopener" class="btn btn-dark btn-sm">
               Voir le site live
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -668,15 +653,15 @@
           </div>
         </div>
         <div class="project-card">
-          <div class="project-card-visual" style="background: linear-gradient(135deg,#fff7ed,#ffedd5)">🛍️</div>
+          <div class="project-card-visual" style="background: linear-gradient(135deg,#fff7ed,#ffedd5)">🏥</div>
           <div class="project-card-body">
-            <h4>Boutique en ligne</h4>
-            <p>E-commerce complet avec panier, paiement Stripe, gestion des stocks et espace client personnalisé.</p>
+            <h4>Gestion de cabinet médical</h4>
+            <p>Application de prise de rendez-vous, gestion des patients, agenda du praticien et historique des consultations.</p>
           </div>
           <div class="project-card-footer">
             <span class="tag">PHP</span>
-            <span class="tag">Stripe</span>
             <span class="tag">MySQL</span>
+            <span class="tag">HTMX</span>
             <span class="status-badge">À venir</span>
           </div>
         </div>
@@ -710,7 +695,7 @@
             <div class="skill-icon-card"><span>⚛️</span><span class="skill-icon-label">React</span></div>
             <div class="skill-icon-card"><span>🟢</span><span class="skill-icon-label">Node.js</span></div>
             <div class="skill-icon-card"><span>🐬</span><span class="skill-icon-label">MySQL</span></div>
-            <div class="skill-icon-card"><span>▲</span><span class="skill-icon-label">Vercel</span></div>
+            <div class="skill-icon-card"><span>🔗</span><span class="skill-icon-label">API REST</span></div>
             <div class="skill-icon-card"><span>🐙</span><span class="skill-icon-label">GitHub</span></div>
             <div class="skill-icon-card"><span>🐳</span><span class="skill-icon-label">Docker</span></div>
             <div class="skill-icon-card"><span>🎨</span><span class="skill-icon-label">Figma</span></div>
@@ -852,7 +837,7 @@
               <select>
                 <option value="">Sélectionner...</option>
                 <option>Site vitrine</option>
-                <option>E-commerce</option>
+                <option>Base de données</option>
                 <option>Application web</option>
                 <option>Maintenance</option>
                 <option>Autre</option>
