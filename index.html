@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElioDev — Création de Sites & Solutions Informatiques</title>
+  <meta name="description" content="Agence web spécialisée en création de sites internet, applications web et solutions informatiques sur mesure." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    * { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Grid bg */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Glow */
+    .glow {
+      box-shadow: 0 0 60px rgba(99,102,241,0.15), 0 0 120px rgba(168,85,247,0.08);
+    }
+
+    /* Card hover */
+    .card-hover {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(99,102,241,0.1);
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99,102,241,0.5);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.15);
+    }
+
+    /* Typing cursor */
+    .cursor::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+      color: #6366f1;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Navbar */
+    .navbar-blur {
+      background: rgba(10,10,15,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Blob */
+    .blob {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: morph 8s ease-in-out infinite;
+    }
+    @keyframes morph {
+      0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+
+    /* Button */
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #4f46e5, #9333ea);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    /* Tag */
+    .tech-tag {
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      color: #a5b4fc;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+
+    /* Section separator */
+    .sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent);
+    }
+
+    /* Scroll indicator */
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, #6366f1, transparent);
+      margin: 0 auto;
+      animation: scrollDown 2s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0% { opacity: 0; transform: translateY(-10px); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(20px); }
+    }
+
+    /* Stats counter */
+    .stat-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Service icon */
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2));
+      border: 1px solid rgba(99,102,241,0.3);
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      height: 4px;
+      background: rgba(99,102,241,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #6366f1, #a855f7);
+      transition: width 1.5s ease;
+    }
+
+    /* Input */
+    .form-input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #e2e8f0;
+      width: 100%;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: rgba(99,102,241,0.6);
+      background: rgba(99,102,241,0.05);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+    }
+    .form-input::placeholder { color: #4b5563; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+  </style>
+</head>
+<body class="grid-bg">
+
+  <!-- ═══════════════════ NAVBAR ═══════════════════ -->
+  <nav class="navbar-blur fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl btn-primary flex items-center justify-center text-white font-bold text-sm">E</div>
+        <span class="font-bold text-lg tracking-tight">Elio<span class="gradient-text">Dev</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm text-slate-400">
+        <a href="#services" class="hover:text-white transition-colors">Services</a>
+        <a href="#projets" class="hover:text-white transition-colors">Projets</a>
+        <a href="#competences" class="hover:text-white transition-colors">Compétences</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <a href="#contact" class="hidden md:inline-flex btn-primary text-white text-sm font-medium px-5 py-2.5 rounded-xl">
+        <span>Démarrer un projet</span>
+      </a>
+
+      <button id="menu-btn" class="md:hidden text-slate-400 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden border-t border-white/5 px-6 py-4 space-y-3 text-sm text-slate-400">
+      <a href="#services" class="block hover:text-white py-1" onclick="this.parentElement.classList.remove('open')">Services</a>
+      <a href="#projets" class="block hover:text-white py-1" onclick="this.parentElement.classList.remove('open')">Projets</a>
+      <a href="#competences" class="block hover:text-white py-1" onclick="this.parentElement.classList.remove('open')">Compétences</a>
+      <a href="#contact" class="block hover:text-white py-1" onclick="this.parentElement.classList.remove('open')">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 relative overflow-hidden">
+    <!-- Background blobs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 blob opacity-20" style="background: linear-gradient(135deg, #6366f1, #a855f7); filter: blur(80px); pointer-events:none;"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 blob opacity-10" style="background: linear-gradient(135deg, #ec4899, #f59e0b); filter: blur(60px); pointer-events:none; animation-delay: 4s;"></div>
+
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-2 text-sm text-indigo-300 mb-8" data-aos="fade-down">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        Disponible pour de nouveaux projets
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6" data-aos="fade-up" data-aos-delay="100">
+        Votre vision,<br/>
+        <span class="gradient-text">notre code</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+        Nous concevons des <strong class="text-white">sites web professionnels</strong>, des applications sur mesure et des solutions informatiques qui propulsent votre activité.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+        <a href="#projets" class="btn-primary text-white font-semibold px-8 py-4 rounded-2xl text-base inline-flex items-center gap-2 justify-center">
+          <span>Voir nos projets</span>
+          <svg class="w-4 h-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="#contact" class="border border-slate-700 hover:border-indigo-500/50 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-2xl text-base transition-all duration-300 inline-flex items-center gap-2 justify-center">
+          Nous contacter
+        </a>
+      </div>
+
+      <!-- Code preview -->
+      <div class="mt-16 bg-[#0d0d1a] border border-white/10 rounded-2xl p-6 max-w-2xl mx-auto text-left glow" data-aos="fade-up" data-aos-delay="400">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
+          <span class="ml-2 text-xs text-slate-600 font-mono">votre-projet.js</span>
+        </div>
+        <pre class="font-mono text-sm leading-loose overflow-hidden"><code><span class="text-purple-400">const</span> <span class="text-blue-300">projet</span> <span class="text-white">= </span><span class="text-yellow-300">await</span> <span class="text-green-300">ElioDev</span><span class="text-white">.</span><span class="text-blue-300">créer</span><span class="text-white">({</span>
+  <span class="text-red-300">design</span><span class="text-white">:</span> <span class="text-green-400">"moderne &amp; professionnel"</span><span class="text-white">,</span>
+  <span class="text-red-300">performance</span><span class="text-white">:</span> <span class="text-purple-400">true</span><span class="text-white">,</span>
+  <span class="text-red-300">délai</span><span class="text-white">:</span> <span class="text-green-400">"rapide"</span><span class="text-white">,</span>
+  <span class="text-red-300">satisfaction</span><span class="text-white">:</span> <span class="text-purple-400">100</span>
+<span class="text-white">});</span>
+
+<span class="text-slate-600">// ✓ Site livré, client satisfait</span>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="mt-16" data-aos="fade-up" data-aos-delay="600">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ═══════════════════ STATS ═══════════════════ -->
+  <section class="py-16 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div data-aos="fade-up" data-aos-delay="0">
+        <div class="stat-num" id="stat1">10+</div>
+        <p class="text-slate-500 text-sm mt-1">Projets livrés</p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-num">100%</div>
+        <p class="text-slate-500 text-sm mt-1">Clients satisfaits</p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-num">3+</div>
+        <p class="text-slate-500 text-sm mt-1">Années d'expérience</p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-num">24h</div>
+        <p class="text-slate-500 text-sm mt-1">Support réactif</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ═══════════════════ SERVICES ═══════════════════ -->
+  <section id="services" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="tech-tag">// services</span>
+        <h2 class="text-3xl md:text-5xl font-black mt-4 mb-4">Ce que nous faisons</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Des solutions complètes pour digitaliser et développer votre présence en ligne.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Service 1 -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl p-7" data-aos="fade-up" data-aos-delay="0">
+          <div class="service-icon mb-5">🌐</div>
+          <h3 class="text-lg font-bold mb-2">Sites Vitrine</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Conception de sites modernes, rapides et optimisés SEO pour valoriser votre image de marque.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tech-tag">HTML/CSS</span>
+            <span class="tech-tag">Tailwind</span>
+            <span class="tech-tag">SEO</span>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl p-7" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon mb-5">⚡</div>
+          <h3 class="text-lg font-bold mb-2">Applications Web</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Développement d'applications web sur mesure avec bases de données, authentification et tableaux de bord.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">React</span>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl p-7" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon mb-5">🛒</div>
+          <h3 class="text-lg font-bold mb-2">E-commerce</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Boutiques en ligne complètes avec gestion des produits, paiements sécurisés et suivi des commandes.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tech-tag">Stripe</span>
+            <span class="tech-tag">CMS</span>
+            <span class="tech-tag">API</span>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl p-7" data-aos="fade-up" data-aos-delay="0">
+          <div class="service-icon mb-5">🔧</div>
+          <h3 class="text-lg font-bold mb-2">Maintenance & Support</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Mise à jour, corrections de bugs, sauvegardes et assistance technique réactive pour votre sérénité.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tech-tag">24/7</span>
+            <span class="tech-tag">Backup</span>
+            <span class="tech-tag">Monitor</span>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl p-7" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon mb-5">📱</div>
+          <h3 class="text-lg font-bold mb-2">Design UI/UX</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Interfaces soignées, responsive et accessibles pensées pour une expérience utilisateur optimale.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tech-tag">Figma</span>
+            <span class="tech-tag">Mobile-first</span>
+            <span class="tech-tag">A11y</span>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl p-7" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon mb-5">☁️</div>
+          <h3 class="text-lg font-bold mb-2">Déploiement Cloud</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Hébergement et déploiement sur Vercel, Netlify ou serveurs dédiés avec CI/CD automatisé.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tech-tag">Vercel</span>
+            <span class="tech-tag">GitHub</span>
+            <span class="tech-tag">CI/CD</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ═══════════════════ PROJETS ═══════════════════ -->
+  <section id="projets" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="tech-tag">// portfolio</span>
+        <h2 class="text-3xl md:text-5xl font-black mt-4 mb-4">Nos réalisations</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Des projets concrets qui parlent d'eux-mêmes.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- Project 1 — Agence Immobilière (featured) -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl overflow-hidden lg:col-span-2" data-aos="fade-up" data-aos-delay="0">
+          <div class="flex flex-col lg:flex-row">
+            <!-- Visual -->
+            <div class="lg:w-1/2 bg-gradient-to-br from-indigo-900/40 to-purple-900/40 p-10 flex items-center justify-center min-h-64 relative overflow-hidden">
+              <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(99,102,241,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.3) 1px, transparent 1px); background-size: 30px 30px;"></div>
+              <!-- App mockup -->
+              <div class="relative w-full max-w-xs">
+                <div class="bg-[#0a0a0f]/80 rounded-xl border border-indigo-500/30 p-4 shadow-2xl">
+                  <div class="flex items-center gap-2 mb-3">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                    <div class="flex-1 bg-white/5 rounded h-4 mx-2 flex items-center px-2">
+                      <span class="text-xs text-slate-500 font-mono">agence-immo.vercel.app</span>
+                    </div>
+                  </div>
+                  <!-- Nav mockup -->
+                  <div class="bg-indigo-600 rounded-lg p-2 mb-2 flex items-center justify-between">
+                    <span class="text-white font-bold text-xs">🏠 ImmoAgence</span>
+                    <div class="flex gap-1">
+                      <div class="bg-white/20 rounded px-2 py-0.5 text-xs text-white">Accueil</div>
+                      <div class="bg-white/10 rounded px-2 py-0.5 text-xs text-white/60">Connexion</div>
+                    </div>
+                  </div>
+                  <!-- Cards mockup -->
+                  <div class="grid grid-cols-2 gap-1.5">
+                    <div class="bg-white/5 rounded-lg p-2">
+                      <div class="bg-indigo-500/20 rounded h-12 mb-1.5 flex items-center justify-center text-lg">🏡</div>
+                      <div class="text-xs text-white font-medium">Villa moderne</div>
+                      <div class="text-xs text-indigo-300 font-bold mt-0.5">350 000 €</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-2">
+                      <div class="bg-purple-500/20 rounded h-12 mb-1.5 flex items-center justify-center text-lg">🏢</div>
+                      <div class="text-xs text-white font-medium">Appartement</div>
+                      <div class="text-xs text-purple-300 font-bold mt-0.5">180 000 €</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Info -->
+            <div class="lg:w-1/2 p-8 lg:p-10 flex flex-col justify-center">
+              <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-3 py-1 text-xs text-indigo-300 mb-4 w-fit">
+                ⭐ Projet phare
+              </div>
+              <h3 class="text-2xl font-black mb-3">Plateforme Agence Immobilière</h3>
+              <p class="text-slate-400 leading-relaxed mb-6">
+                Application web complète pour une agence immobilière : gestion des biens, système de favoris, espace agent/admin, CRM intégré, tableau de bord analytique, agenda et estimation de biens.
+              </p>
+              <div class="space-y-2 mb-6">
+                <div class="flex items-center gap-2 text-sm text-slate-400">
+                  <span class="text-green-400">✓</span> Authentification multi-rôles (admin, agent, client)
+                </div>
+                <div class="flex items-center gap-2 text-sm text-slate-400">
+                  <span class="text-green-400">✓</span> Interface dynamique avec HTMX (sans rechargement)
+                </div>
+                <div class="flex items-center gap-2 text-sm text-slate-400">
+                  <span class="text-green-400">✓</span> Dashboard CRM, agenda & honoraires
+                </div>
+                <div class="flex items-center gap-2 text-sm text-slate-400">
+                  <span class="text-green-400">✓</span> Déployé sur Vercel + TiDB Cloud
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-8">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">HTMX</span>
+                <span class="tech-tag">TailwindCSS</span>
+                <span class="tech-tag">TiDB</span>
+                <span class="tech-tag">Vercel</span>
+              </div>
+              <div class="flex gap-3">
+                <a href="https://github.com/Elio122/agence" target="_blank" rel="noopener"
+                   class="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-sm text-slate-300 font-medium px-5 py-2.5 rounded-xl transition-all">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.92.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  Code source
+                </a>
+                <a href="https://agence-elio122.vercel.app" target="_blank" rel="noopener"
+                   class="btn-primary flex items-center gap-2 text-white text-sm font-medium px-5 py-2.5 rounded-xl">
+                  <span>Voir le site</span>
+                  <svg class="w-4 h-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 — placeholder -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <div class="bg-gradient-to-br from-emerald-900/30 to-teal-900/30 p-8 flex items-center justify-center h-48">
+            <div class="text-center">
+              <div class="text-5xl mb-2">💼</div>
+              <div class="text-slate-500 text-sm">CRM d'entreprise</div>
+            </div>
+          </div>
+          <div class="p-7">
+            <h3 class="text-lg font-bold mb-2">CRM & Gestion Client</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">Tableau de bord de gestion relation client avec suivi des opportunités, reporting et pipeline commercial.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Chart.js</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 — placeholder -->
+        <div class="card-hover bg-[#0d0d1a] rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-gradient-to-br from-orange-900/30 to-red-900/30 p-8 flex items-center justify-center h-48">
+            <div class="text-center">
+              <div class="text-5xl mb-2">🛍️</div>
+              <div class="text-slate-500 text-sm">Boutique e-commerce</div>
+            </div>
+          </div>
+          <div class="p-7">
+            <h3 class="text-lg font-bold mb-2">Boutique en ligne</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">E-commerce complet avec panier, paiement Stripe, gestion des stocks et espace client personnalisé.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">Stripe</span>
+              <span class="tech-tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ═══════════════════ COMPÉTENCES ═══════════════════ -->
+  <section id="competences" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="tech-tag">// stack technique</span>
+        <h2 class="text-3xl md:text-5xl font-black mt-4 mb-4">Nos compétences</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Un arsenal technologique maîtrisé pour répondre à tous vos besoins.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Left -->
+        <div class="space-y-6" data-aos="fade-right">
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="font-medium">HTML / CSS / Tailwind</span>
+              <span class="text-indigo-400 font-mono">95%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" data-width="95" style="width:0"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="font-medium">PHP / Laravel</span>
+              <span class="text-indigo-400 font-mono">88%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" data-width="88" style="width:0"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="font-medium">JavaScript / React</span>
+              <span class="text-indigo-400 font-mono">82%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" data-width="82" style="width:0"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="font-medium">MySQL / PostgreSQL</span>
+              <span class="text-indigo-400 font-mono">85%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" data-width="85" style="width:0"></div></div>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="space-y-6" data-aos="fade-left">
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="font-medium">Node.js / API REST</span>
+              <span class="text-indigo-400 font-mono">78%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" data-width="78" style="width:0"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="font-medium">Git / GitHub / CI-CD</span>
+              <span class="text-indigo-400 font-mono">90%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" data-width="90" style="width:0"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="font-medium">Docker / Linux</span>
+              <span class="text-indigo-400 font-mono">72%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" data-width="72" style="width:0"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="font-medium">UI/UX Design (Figma)</span>
+              <span class="text-indigo-400 font-mono">80%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" data-width="80" style="width:0"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech logos grid -->
+      <div class="mt-16 grid grid-cols-4 md:grid-cols-8 gap-4" data-aos="fade-up">
+        <div class="flex flex-col items-center gap-2 p-3 bg-white/3 rounded-xl hover:bg-white/6 transition-colors">
+          <span class="text-2xl">🐘</span>
+          <span class="text-xs text-slate-500">PHP</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-3 bg-white/3 rounded-xl hover:bg-white/6 transition-colors">
+          <span class="text-2xl">⚛️</span>
+          <span class="text-xs text-slate-500">React</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-3 bg-white/3 rounded-xl hover:bg-white/6 transition-colors">
+          <span class="text-2xl">🟢</span>
+          <span class="text-xs text-slate-500">Node.js</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-3 bg-white/3 rounded-xl hover:bg-white/6 transition-colors">
+          <span class="text-2xl">🐬</span>
+          <span class="text-xs text-slate-500">MySQL</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-3 bg-white/3 rounded-xl hover:bg-white/6 transition-colors">
+          <span class="text-2xl">▲</span>
+          <span class="text-xs text-slate-500">Vercel</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-3 bg-white/3 rounded-xl hover:bg-white/6 transition-colors">
+          <span class="text-2xl">🐙</span>
+          <span class="text-xs text-slate-500">GitHub</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-3 bg-white/3 rounded-xl hover:bg-white/6 transition-colors">
+          <span class="text-2xl">🐳</span>
+          <span class="text-xs text-slate-500">Docker</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-3 bg-white/3 rounded-xl hover:bg-white/6 transition-colors">
+          <span class="text-2xl">🎨</span>
+          <span class="text-xs text-slate-500">Figma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ═══════════════════ PROCESS ═══════════════════ -->
+  <section class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="tech-tag">// méthode</span>
+        <h2 class="text-3xl md:text-5xl font-black mt-4 mb-4">Comment ça marche ?</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Un processus clair et transparent pour livrer votre projet dans les meilleures conditions.</p>
+      </div>
+
+      <div class="relative">
+        <!-- Line -->
+        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/50 via-purple-500/30 to-transparent transform -translate-x-1/2"></div>
+
+        <div class="space-y-12">
+
+          <div class="flex flex-col md:flex-row items-center gap-6" data-aos="fade-right">
+            <div class="md:w-1/2 md:text-right">
+              <h3 class="text-xl font-bold mb-2">1. Découverte & Brief</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">Échange approfondi pour comprendre vos besoins, vos objectifs et votre cible. Définition du cahier des charges.</p>
+            </div>
+            <div class="w-12 h-12 rounded-full btn-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0 relative z-10">1</div>
+            <div class="md:w-1/2"></div>
+          </div>
+
+          <div class="flex flex-col md:flex-row items-center gap-6" data-aos="fade-left">
+            <div class="md:w-1/2"></div>
+            <div class="w-12 h-12 rounded-full btn-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0 relative z-10">2</div>
+            <div class="md:w-1/2">
+              <h3 class="text-xl font-bold mb-2">2. Design & Maquette</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">Création des wireframes et maquettes Figma. Validation de l'identité visuelle avant développement.</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row items-center gap-6" data-aos="fade-right">
+            <div class="md:w-1/2 md:text-right">
+              <h3 class="text-xl font-bold mb-2">3. Développement</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">Intégration et développement du site avec points de suivi réguliers. Code propre, performant et sécurisé.</p>
+            </div>
+            <div class="w-12 h-12 rounded-full btn-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0 relative z-10">3</div>
+            <div class="md:w-1/2"></div>
+          </div>
+
+          <div class="flex flex-col md:flex-row items-center gap-6" data-aos="fade-left">
+            <div class="md:w-1/2"></div>
+            <div class="w-12 h-12 rounded-full btn-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0 relative z-10">4</div>
+            <div class="md:w-1/2">
+              <h3 class="text-xl font-bold mb-2">4. Livraison & Suivi</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">Déploiement en production, tests finaux et formation. Suivi post-lancement et support continu.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ═══════════════════ CONTACT ═══════════════════ -->
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="tech-tag">// contact</span>
+        <h2 class="text-3xl md:text-5xl font-black mt-4 mb-4">Démarrons ensemble</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Vous avez un projet ? Parlons-en. Réponse garantie sous 24h.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+
+        <!-- Left info -->
+        <div class="lg:col-span-2 space-y-6" data-aos="fade-right">
+          <div class="bg-[#0d0d1a] border border-white/5 rounded-2xl p-6 card-hover">
+            <div class="service-icon mb-4">📧</div>
+            <h4 class="font-semibold mb-1">Email</h4>
+            <p class="text-slate-400 text-sm">contact@eliodev.fr</p>
+          </div>
+          <div class="bg-[#0d0d1a] border border-white/5 rounded-2xl p-6 card-hover">
+            <div class="service-icon mb-4">💬</div>
+            <h4 class="font-semibold mb-1">Réseaux</h4>
+            <p class="text-slate-400 text-sm">GitHub : Elio122</p>
+          </div>
+          <div class="bg-[#0d0d1a] border border-white/5 rounded-2xl p-6 card-hover">
+            <div class="service-icon mb-4">⚡</div>
+            <h4 class="font-semibold mb-1">Réactivité</h4>
+            <p class="text-slate-400 text-sm">Réponse en moins de 24h ouvrées</p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="lg:col-span-3" data-aos="fade-left">
+          <form id="contact-form" class="bg-[#0d0d1a] border border-white/5 rounded-2xl p-8 space-y-5" onsubmit="handleSubmit(event)">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm text-slate-400 mb-2">Prénom *</label>
+                <input type="text" placeholder="Jean" class="form-input" required />
+              </div>
+              <div>
+                <label class="block text-sm text-slate-400 mb-2">Nom *</label>
+                <input type="text" placeholder="Dupont" class="form-input" required />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Email *</label>
+              <input type="email" placeholder="jean@exemple.fr" class="form-input" required />
+            </div>
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Type de projet</label>
+              <select class="form-input" style="cursor:pointer">
+                <option value="" style="background:#0d0d1a">Choisir...</option>
+                <option value="vitrine" style="background:#0d0d1a">Site vitrine</option>
+                <option value="ecommerce" style="background:#0d0d1a">E-commerce</option>
+                <option value="app" style="background:#0d0d1a">Application web</option>
+                <option value="maintenance" style="background:#0d0d1a">Maintenance</option>
+                <option value="autre" style="background:#0d0d1a">Autre</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Message *</label>
+              <textarea placeholder="Décrivez votre projet..." rows="4" class="form-input resize-none" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full text-white font-semibold py-4 rounded-xl text-base">
+              <span>Envoyer le message ✉️</span>
+            </button>
+            <div id="form-success" class="hidden text-center text-green-400 text-sm pt-2">
+              ✓ Message envoyé ! Nous vous répondrons dans les 24h.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="border-t border-white/5 py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500 text-sm">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg btn-primary flex items-center justify-center text-white font-bold text-xs">E</div>
+        <span>ElioDev — Solutions Informatiques</span>
+      </div>
+      <span>© 2025 ElioDev. Tous droits réservés.</span>
+      <div class="flex gap-4">
+        <a href="https://github.com/Elio122" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Init AOS
+    AOS.init({ duration: 700, once: true, offset: 80 });
+
+    // Animate progress bars on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fills = entry.target.querySelectorAll('.progress-fill');
+          fills.forEach(fill => {
+            const w = fill.getAttribute('data-width');
+            setTimeout(() => { fill.style.width = w + '%'; }, 200);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const skillsSection = document.getElementById('competences');
+    if (skillsSection) observer.observe(skillsSection);
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('text-white', a.getAttribute('href') === '#' + current);
+        a.classList.toggle('text-slate-400', a.getAttribute('href') !== '#' + current);
+      });
+    });
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.innerHTML = '<span>Envoi en cours...</span>';
+      btn.disabled = true;
+      setTimeout(() => {
+        document.getElementById('form-success').classList.remove('hidden');
+        btn.innerHTML = '<span>✓ Envoyé</span>';
+        e.target.reset();
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
